@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="JS/Dice.js"></script>
+    <script type="text/javascript" src="JS/RiskSupport.js"></script>
+    <script type="text/javascript" src="JS/Risk.js"></script>
+    <title>The Risk boardgame dice roll probability calculator and battle simulation</title>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+    <script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
+</head>
+
+<body>
+    <div style="width: 100%;" align="center">
+        <div style="width: 1000px;" >
+            <h1>The Risk boardgame dice roll probability calculator and battle simulation</h1>
+            <p>This application will help you understand the mathematics behind Risk dice throws. You can use it to calculate general probabilities or simulate specific battle situations. The simulator will use 10.000 fights (roughly 50.000 dice rolls) to determine the outcome.</p>
+            <div style="width: 270px; height: 20px;" align="center">
+                <div style="float: left;  width: 90px; margin-left: -10px;">
+                    <div id="fb-root"></div>
+                    <fb:like href="http://diceroll.stritar.net/risk.html" send="false" layout="button_count" width="90" show_faces="false" action="like" font=""></fb:like>
+                </div>
+                <div style="float: right; width: 90px; ">
+                    <g:plusone size="medium" href="http://diceroll.stritar.net/risk.html"></g:plusone>
+                </div>         
+                <div style="float: right; width: 90px; ">
+                    <a href="http://twitter.com/share" id="tweetbutton" class="twitter-share-button" data-url="http://diceroll.stritar.net/risk.html" data-count="horizontal" data-text="The Risk boardgame dice roll probability calculator and battle simulation"  ></a>
+                </div>
+            </div>
+            <div style="width: 1000px;"  align="left">
+	            <div style="float:left; width: 507px;">
+		            <h2>Battle</h2>
+		            <h3>Parameters</h3>
+		            <p>Enter the number of armies, for attacker and defender. <br/>
+		            The simulation will always throw the maximum amount of dice available. <br/>
+		            Defender can have comma separated multiple terrirories (e.g. 10 vs. 6,4,2). <br/>
+		            Leave blank for generic results.</p>
+	                <table cellpadding="2">
+		                <tr>
+		                    <td>Attacker:</td>
+		                    <td><input type="text" id="player1" style="width: 150px;" /></td>
+                        </tr>
+		                <tr>
+		                    <td>Defender:</td>
+		                    <td><input type="text" id="player2"  style="width: 150px;" /></td>
+                        </tr>
+                        <tr>
+		                    <td colspan="2" align="right"><input type="button" onclick="battleResults();" value="Calculate" /></td>
+                        </tr>
+		            </table>
+            		
+		            <div id="resultsBattle" style="display: none;">
+		                <h3>Totals</h3>
+		                <div id="resultsBattleTotals"></div>
+		                <a href="javascript:void(0);" onclick="diceRollLogShow(this.id, 'resultsBattleThrows')" id="show">Show throws distribution</a>
+		                <div id="resultsBattleThrows" style="display: none;">
+		                    <h4>Dice throws distribution</h4>
+		                    <table id="diceRollLog" cellpadding="2">
+                    		    
+	                        </table>
+	                    </div>
+		                <h3>Fights (first 1000)</h3>
+		                <table id="resultsBattleDetailed" cellpadding="2">
+		                </table>
+		            </div>
+	            </div>
+	            <div style="float:left; width: 313px; " >
+		            <h2>Possibilities</h2>
+		            <h3>Parameters</h3>
+		            <p>Get all different possibilities in Risk from a specific dice roll combination (attacker number vs. defender number).</p>
+		             <table cellpadding="2">
+		                <tr>
+		                    <td>Situation :</td>
+		                    <td><select id="allType"  style="width: 150px;">
+		                            <option value="3,2">3:2</option>
+		                            <option value="3,1">3:1</option>
+		                            <option value="2,2">2:2</option>
+		                            <option value="2,1">2:1</option>
+		                            <option value="1,2">1:2</option>
+		                            <option value="1,1">1:1</option>
+		                        </select>
+		                    </td>
+                        </tr>
+                        <tr>
+		                    <td colspan="2" align="right"><input type="button" onclick="allResults();" value="Calculate" /></td>
+                        </tr>
+		            </table>
+    		        
+		            <div id="resultsAll" style="display: none;">
+		                <h3>Totals</h3>
+		                <div id="resultsAllTotals"></div>
+		                <h3>Fights</h3>
+		                <table id="resultsAllDetailed" cellpadding="2">
+		                </table>
+	                </div>
+	            </div>
+	            <div style="float:left; width: 160px; padding-left: 20px; "><br /><br />
+	                <script type="text/javascript"><!--
+	                    google_ad_client = "ca-pub-9707137073427376";
+	                    /* Dice skyscraper */
+	                    google_ad_slot = "5249082764";
+	                    google_ad_width = 160;
+	                    google_ad_height = 600;
+                        //-->
+                        </script>
+                        <script type="text/javascript"
+                        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+    <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-10663848-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+    </script>
+    <!-- Google Analytics Social Button Tracking -->
+</body>
+</html>

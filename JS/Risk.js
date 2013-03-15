@@ -100,6 +100,13 @@ function battleBlank() {
     battleTotalRender(document.getElementById("resultsBattleTotals"), score, i);
 }
 
+///////////////////////////
+////Grega Stritar, Neolab
+////grega.stritar@neolab.si
+////http://neolab.si
+////http://stritar.net
+///////////////////////////
+
 ///new real battle with fixed numbers
 //attackerPosition - the number of armies for the attacker
 //defencerPosition - comma separated number of armies in different territories for defender

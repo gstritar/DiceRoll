@@ -1,4 +1,11 @@
-//logging dice rolls
+///////////////////////////
+////Grega Stritar, Neolab
+////grega.stritar@neolab.si
+////http://neolab.si
+////http://stritar.net
+///////////////////////////
+
+///logging dice rolls
 var diceRollLog = new Array();
 var diceRollThrows = 0;
 

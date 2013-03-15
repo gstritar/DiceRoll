@@ -1,3 +1,10 @@
+///////////////////////////
+////Grega Stritar, Neolab
+////grega.stritar@neolab.si
+////http://neolab.si
+////http://stritar.net
+///////////////////////////
+
 ///setting parameters for the attacker
 //diceNumber - the number of dice attacker throws, fixes upper bound
 function attackerDiceRoll(diceNumber) {

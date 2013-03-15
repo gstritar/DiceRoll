@@ -3,6 +3,7 @@ var diceRollLog = new Array();
 var diceRollThrows = 0;
 
 ///rolls N-sided dice, default = 6
+//sides - number of dice sides
 function diceRoll(sides) {
     //set default value
     if (sides == null) {
@@ -30,8 +31,9 @@ function diceRollLogReset() {
 }
 
 ///displays dice roll results log
+//table - the html table to display the results
 function diceRollLogRender(table) {
-    //calculate totals for checking
+    //calculate totals for checking: totals, relative, expected, deviation
     var diceTotals = new Array(0, 0, 0, 0);
     var diceSides = 0;
     //count the number of dice sides
@@ -75,6 +77,8 @@ function diceRollLogRender(table) {
 }
 
 ///add x right aligned cells to a table row
+//row - table row to add the cells to
+//number - the number of cells to add
 function insertCells(row, number) {
     //loop the cells by number
     for (var i = 0; i < number; i++) {
@@ -83,7 +87,9 @@ function insertCells(row, number) {
     }
 }
 
-//show hide dice detailed throw distribution
+///show hide dice detailed throw distribution
+//link - the link that triggers this will change text
+//the html element to display / hide
 function diceRollLogShow(link, element) {
     if (document.getElementById(element).style.display == 'none') {
         document.getElementById(element).style.display = 'block';
